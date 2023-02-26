@@ -1,7 +1,5 @@
 package tp1.universite;
 
-import tp1.TestString;
-
 import java.util.Scanner;
 
 /**
@@ -24,6 +22,7 @@ public class Etudiant {
     private String nom;
     private String prenom;
     private String adresse;
+    public String group;
 
     private double[] notes = new double[5];
 
@@ -40,6 +39,7 @@ public class Etudiant {
         setPrenom(prenom);
         setNom(nom);
         setLogin(login);
+        this.group = group;
         this.notes = notes;
         // L'ordre n'est pas si impactant avec cette initialisation mais à respecter.
     }
@@ -47,7 +47,7 @@ public class Etudiant {
     /**
      * La méthode getLogin() ne prend pas de paramètre et retourne un Sring.
      *
-     * @return le login.
+     * @return le login de l'étudiant.
      */
     public String getLogin() {
         return login;
@@ -56,7 +56,7 @@ public class Etudiant {
     /**
      * La méthode getNom() ne prend pas de paramètre et retourne un Sring.
      *
-     * @return le nom.
+     * @return le nom de l'étudiant.
      */
     public String getNom() {
         return nom;
@@ -65,11 +65,16 @@ public class Etudiant {
     /**
      * La méthode getPrenom() ne prend pas de paramètre et retourne un Sring.
      *
-     * @return le prénom.
+     * @return le prénom de l'étudiant.
      */
-    public String getPrenom() {
-        return prenom;
-    }
+    public String getPrenom() {return prenom;}
+    /**
+     * La méthode getGroup() ne prend pas de paramètre et retourne un Sring.
+     *
+     * @return le groupe de l'étudiant.
+     */
+    public String getGroup(){return group;}
+
     /**
      * La méthode getCompteur() ne prend pas de paramètre et retourne un double.
      *
@@ -180,11 +185,9 @@ public class Etudiant {
 
         for (int i = 0; i < 5; i++) {
 
-            if (!reponse.equals("oui") && !reponse.equals("non")){
+            while (!reponse.equals("oui") && !reponse.equals("non")){
 
                 System.out.println("Veuillez rentrer soit oui soit non.");
-
-                System.out.println("Voulez vous rentrer une autre note ? [oui ou non]");
                 reponse = lecteur.next();
 
             }
@@ -213,7 +216,11 @@ public class Etudiant {
 
             }
     }
-
+    /**
+     * La fonction sumNotes() ne prend pas de paramètre et retourne un double.
+     * Permet d'ajouter la somme des notes de la liste/table pour en faire une moyenne par exemple.
+     *
+     */
     public double sumNotes(){
         double sum = 0;
 
@@ -226,6 +233,42 @@ public class Etudiant {
         } else {
             return sum;
         }
+    }
+    /**
+     * La fonction AddGroup() ne prend pas de paramètre et retourne un Character.
+     * Permet d'ajouter un groupe à un élève.
+     *
+     */
+    public void AddGroup(){
+
+
+        String reponse;
+        String groupChoice;
+
+        System.out.println("voulez-vous ajouter l'élève dans un groupe ? [oui ou non]");
+        reponse = lecteur.nextLine();
+
+        while (!reponse.equals("oui") && !reponse.equals("non")){ // Que choisir entre oui et non
+
+            System.out.println("Veuillez choisir entre [oui et non]");
+            reponse = lecteur.nextLine();
+
+        }
+
+        if (reponse.equals("oui")){
+
+            System.out.println("Dans quel groupe voulez-vous ajouter l'élève ? [Choissisez une lettre]");
+            groupChoice = lecteur.nextLine();
+
+            while (groupChoice.length() >= 2 || !groupChoice.matches("[a-zA-Z]")){
+                System.out.println("Veuillez choisir qu'une seul lettre");
+                groupChoice = lecteur.nextLine();
+            }
+
+                group = groupChoice;
+
+        }
+
     }
 
 }

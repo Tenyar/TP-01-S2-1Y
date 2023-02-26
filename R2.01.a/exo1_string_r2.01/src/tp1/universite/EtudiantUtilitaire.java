@@ -27,6 +27,13 @@ public class EtudiantUtilitaire {
 
             System.out.println("\n ------------------------ " + " \n login : " + student.getLogin() + "\n Nom complet : " + student.getNomComplet() +
                     "\n Mail : " + student.getMail() + "\n Adresse : " + student.getAdresse());
+
+            if (student.getGroup() == null){
+                System.out.println(" Groupe : aucun");
+            } else {
+                System.out.println(" Groupe : " + student.getGroup());
+            }
+
             if (student.getCompteur() <= 0){
 
                 System.out.println(" Moyenne : aucune");
@@ -36,10 +43,20 @@ public class EtudiantUtilitaire {
                 System.out.printf(" " + Math.round(student.getCompteur()) + " Notes : ");
                 ParcourNote(student);
             }
+
+            // **************************************************************************
+
         } else {
 
             System.out.println("\n ------------------------ " + " \n login : " + student.getLogin() + "\n Nom complet : " + student.getNomComplet() +
                     "\n Mail : " + student.getMail() + "\n Adresse : aucune");
+
+            if (student.getGroup() == null){
+                System.out.println(" Groupe : aucun");
+            } else {
+                System.out.println(" Groupe : " + student.getGroup());
+            }
+
 
             if (student.getCompteur() <= 0){
 

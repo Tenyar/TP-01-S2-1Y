@@ -26,6 +26,7 @@ public class TestEtudiant {
         etudiant1.addNote();
         etudiant1.sumNotes();
         etudiant1.getMoyenne();
+        etudiant1.AddGroup();
 
         EtudiantUtilitaire.affiche(etudiant1);
         EtudiantUtilitaire.affiche(etudiant2);
